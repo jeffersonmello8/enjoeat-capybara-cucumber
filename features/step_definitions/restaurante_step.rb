@@ -1,30 +1,40 @@
+Dado("que tenho uma lista de restaurantes") do
+  @restaurant_data = [
+    { name: "Bread & Bakery", category: "Padaria", delivery_time: "25 minutos", rating: "4.9" },
+    { name: "Burguer House", category: "Hamburgers", delivery_time: "30 minutos", rating: "3.5" },
+  ]
+end
+
 Quando("acesso a lista de restaurantes") do
-    visit '/restaurants'
-    @restaurant_data = [
-        {name: 'Bread & Bakery', category: 'Padaria', delivery_time: '25 minutos', rating: '4.9'},
-        {name: 'Burguer House', category: 'Hamburgers', delivery_time: '30 minutos', rating: '3.5'}
-    ]
-    @restaurants = all('.restaurant-item')
+  visit "/restaurants"
 end
 
 Então("vejo todas as opções disponíveis") do
-    expect(@restaurants.size).to be > 0
+  restaurants = all(".restaurant-item")
+
+  expect(restaurants.size).to be > 0
 end
 
 Então("cada restaurante deve exibir sua categoria") do
-    @restaurant_data.each_with_index do |value, index|
-        expect(@restaurants[index]).to have_text value[:category]
-    end 
+  restaurants = all(".restaurant-item")
+
+  @restaurant_data.each_with_index do |value, index|
+    expect(restaurants[index]).to have_text value[:category]
+  end
 end
 
 Então("cada restaurante deve exibir o tempo de entrega") do
-    @restaurant_data.each_with_index do |value, index|
-        expect(@restaurants[index]).to have_text value[:delivery_time]
-    end 
+  restaurants = all(".restaurant-item")
+
+  @restaurant_data.each_with_index do |value, index|
+    expect(restaurants[index]).to have_text value[:delivery_time]
+  end
 end
 
 Então("cada restaurante deve exibir sua nota de avaliação") do
-    @restaurant_data.each_with_index do |value, index|
-        expect(@restaurants[index]).to have_text value[:rating]
-    end 
+  restaurants = all(".restaurant-item")
+
+  @restaurant_data.each_with_index do |value, index|
+    expect(restaurants[index]).to have_text value[:rating]
+  end
 end
