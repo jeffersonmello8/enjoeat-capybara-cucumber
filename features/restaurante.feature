@@ -5,25 +5,12 @@ Funcionalidade: Restaurantes
     Sendo um usuário que deseja pedir comida
     Posso acessar a lista de restaurantes
 
-    Contexto: Lista de restaurantes
-        Dado que tenho uma lista de restaurantes
-    
-    Cenario: Todos os restaurantes
+    Cenario: Restaurantes disponíveis
 
+        Dado que temos o seguintes restaurantes
+            | nome           | categoria  | entrega    | avaliacao |
+            | Bread & Bakery | Padaria    | 25 minutos | 4.9       |
+            | Burger House   | Hamburgers | 30 minutos | 3.5       |
+            | Coffee Corner  | Cafeteria  | 20 minutos | 4.8       |
         Quando acesso a lista de restaurantes
-        Então vejo todas as opções disponíveis
-
-    Cenario: Categorias
-
-        Quando acesso a lista de restaurantes
-        Então cada restaurante deve exibir sua categoria
-
-    Cenario: Tempo de entrega
-
-        Quando acesso a lista de restaurantes
-        Então cada restaurante deve exibir o tempo de entrega
-
-    Cenario: Nota de avaliação
-
-        Quando acesso a lista de restaurantes
-        Então cada restaurante deve exibir sua nota de avaliação
+        Então devo ver todos os restaurantes desta lista
